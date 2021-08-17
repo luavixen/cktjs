@@ -15,16 +15,17 @@
   "type": "module",
   "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "main": "./dist/ckt.cjs.js",
-  "unpkg": "./dist/ckt.iife.min.js",
-  "jsdelivr": "./dist/ckt.iife.min.js",
+  "main": "./dist/cktjs.cjs",
+  "unpkg": "./dist/cktjs-browser.js",
+  "jsdelivr": "./dist/cktjs-browser.js",
   "exports": {
     ".": {
-      "require": "./dist/ckt.cjs.js",
+      "require": "./dist/cktjs.cjs",
       "default": "./lib/index.js"
     }
   },
   "scripts": {
+    "build": "rollup --config rollup.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,5 +35,9 @@
   "bugs": {
     "url": "https://github.com/luavixen/cktjs/issues"
   },
-  "homepage": "https://github.com/luavixen/cktjs#readme"
+  "homepage": "https://github.com/luavixen/cktjs#readme",
+  "devDependencies": {
+    "rollup": "^2.56.2",
+    "terser": "^5.7.1"
+  }
 }
