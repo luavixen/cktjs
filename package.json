@@ -1,0 +1,38 @@
+{
+  "name": "cktjs",
+  "version": "1.0.0",
+  "description": "JSON-style CKT parsing/stringification.",
+  "author": "Lua MacDougall <lua@foxgirl.dev> (https://foxgirl.dev/)",
+  "license": "MIT",
+  "keywords": [
+    "ckt",
+    "json",
+    "parse",
+    "decode",
+    "stringify",
+    "encode"
+  ],
+  "type": "module",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "main": "./dist/ckt.cjs.js",
+  "unpkg": "./dist/ckt.iife.min.js",
+  "jsdelivr": "./dist/ckt.iife.min.js",
+  "exports": {
+    ".": {
+      "require": "./dist/ckt.cjs.js",
+      "default": "./lib/index.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luavixen/cktjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luavixen/cktjs/issues"
+  },
+  "homepage": "https://github.com/luavixen/cktjs#readme"
+}
