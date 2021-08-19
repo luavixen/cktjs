@@ -13,34 +13,34 @@ describe('stringify', () => {
 
   it('stringifies JSON primitives', () => {
     assertStringify(
-      { input: null, expected: `null` },
-      { input: false, expected: `false` },
-      { input: true, expected: `true` },
-      { input: 0, expected: `0` },
-      { input: 1, expected: `1` },
-      { input: 10, expected: `10` },
-      { input: 1.0, expected: `1` },
-      { input: 1.1, expected: `"1.1"` },
-      { input: 1.01, expected: `"1.01"` },
-      { input: 32, expected: `32` },
-      { input: -98.44, expected: `"-98.44"` },
-      { input: 1e33, expected: `"1e+33"` },
-      { input: 6.0221409e+23, expected: `"6.0221409e+23"` },
-      { input: -2.99792458e-6, expected: `"-0.00000299792458"` },
-      { input: -9.6574e-99, expected: `"-9.6574e-99"` },
-      { input: '', expected: `""` },
-      { input: ' ', expected: `" "` },
-      { input: 'hello', expected: `hello` },
-      { input: 'hello world', expected: `hello world` },
-      { input: 'hello, world', expected: `"hello, world"` },
-      { input: 'hello_world', expected: `hello_world` },
-      { input: 'hello-world', expected: `"hello-world"` },
-      { input: '1000 Cool Strings', expected: `1000 Cool Strings` },
-      { input: '1000 Cool Strings!', expected: `"1000 Cool Strings!"` },
-      { input: '1000! Cool Strings', expected: `"1000! Cool Strings"` },
-      { input: '\uD83E\uDD7A', expected: `"\\ud83e\\udd7a"` },
-      { input: '\x00\x1F\x7F', expected: `"\\x00\\x1f\\u007f"` },
-      { input: '\x18weird\x1Aascii\x0C\x0Dcharacters\xFF\x1B', expected: `"\\x18weird\\x1aascii\\x0c\\rcharacters\\u00ff\\x1b"` },
+      { input: null, expected: 'null' },
+      { input: false, expected: 'false' },
+      { input: true, expected: 'true' },
+      { input: 0, expected: '0' },
+      { input: 1, expected: '1' },
+      { input: 10, expected: '10' },
+      { input: 1.0, expected: '1' },
+      { input: 1.1, expected: '"1.1"' },
+      { input: 1.01, expected: '"1.01"' },
+      { input: 32, expected: '32' },
+      { input: -98.44, expected: '"-98.44"' },
+      { input: 1e33, expected: '"1e+33"' },
+      { input: 6.0221409e+23, expected: '"6.0221409e+23"' },
+      { input: -2.99792458e-6, expected: '"-0.00000299792458"' },
+      { input: -9.6574e-99, expected: '"-9.6574e-99"' },
+      { input: '', expected: '""' },
+      { input: ' ', expected: '" "' },
+      { input: 'hello', expected: 'hello' },
+      { input: 'hello world', expected: 'hello world' },
+      { input: 'hello, world', expected: '"hello, world"' },
+      { input: 'hello_world', expected: 'hello_world' },
+      { input: 'hello-world', expected: '"hello-world"' },
+      { input: '1000 Cool Strings', expected: '1000 Cool Strings' },
+      { input: '1000 Cool Strings!', expected: '"1000 Cool Strings!"' },
+      { input: '1000! Cool Strings', expected: '"1000! Cool Strings"' },
+      { input: '\uD83E\uDD7A', expected: '"\\ud83e\\udd7a"' },
+      { input: '\x00\x1F\x7F', expected: '"\\x00\\x1f\\u007f"' },
+      { input: '\x18weird\x1Aascii\x0C\x0Dcharacters\xFF\x1B', expected: '"\\x18weird\\x1aascii\\x0c\\rcharacters\\u00ff\\x1b"' },
     );
   });
 
@@ -88,7 +88,7 @@ array = [
 
     assertStringify({
       input: object,
-      expected: `a=10,b=20,c=30,objectKey=stringValue,nestedObject=[x=null,y=false,z=true],array=[first element,second element,third element,[this=is the 4th element,name=[first=CKT,last="???"]]]`,
+      expected: 'a=10,b=20,c=30,objectKey=stringValue,nestedObject=[x=null,y=false,z=true],array=[first element,second element,third element,[this=is the 4th element,name=[first=CKT,last="???"]]]',
     });
   });
 
@@ -110,53 +110,53 @@ array = [
           keep3: 'kept!',
         },
       },
-      expected: `functions=[],symbols=[],undefined=[],bigints=[],others=[null,false,true,0,1,"",hello],objectOmitTest=[keep1=null,keep2=40,keep3="kept!"]`,
+      expected: 'functions=[],symbols=[],undefined=[],bigints=[],others=[null,false,true,0,1,"",hello],objectOmitTest=[keep1=null,keep2=40,keep3="kept!"]',
     });
     assertStringify(
-      { input: function () {}, expected: `` },
-      { input: Symbol(), expected: `` },
-      { input: undefined, expected: `` },
-      { input: 2048n, expected: `` },
+      { input: function () {}, expected: '' },
+      { input: Symbol(), expected: '' },
+      { input: undefined, expected: '' },
+      { input: 2048n, expected: '' },
     );
   });
 
   it('unboxes boxed primitives', () => {
     assertStringify(
-      { input: new Boolean(false), expected: `false` },
-      { input: new Boolean(true), expected: `true` },
-      { input: new Number(0), expected: `0` },
-      { input: new Number(-10.44), expected: `"-10.44"` },
-      { input: new String(''), expected: `""` },
-      { input: new String('hello'), expected: `hello` },
+      { input: new Boolean(false), expected: 'false' },
+      { input: new Boolean(true), expected: 'true' },
+      { input: new Number(0), expected: '0' },
+      { input: new Number(-10.44), expected: '"-10.44"' },
+      { input: new String(''), expected: '""' },
+      { input: new String('hello'), expected: 'hello' },
       {
         input: {
           a: new Boolean(true),
           b: new Number(1024),
           c: new String('test string!!'),
         },
-        expected: `a=true,b=1024,c="test string!!"`,
+        expected: 'a=true,b=1024,c="test string!!"',
       },
     );
   });
 
   it('respects toJSON', () => {
     assertStringify(
-      { input: new Date(1629263887685), expected: `"2021-08-18T05:18:07.685Z"` },
-      { input: { toJSON: () => [['yes']] }, expected: `[yes]` },
+      { input: new Date(1629263887685), expected: '"2021-08-18T05:18:07.685Z"' },
+      { input: { toJSON: () => [['yes']] }, expected: '[yes]' },
       {
         input: {
           a: { toJSON: () => [1, 2, 3, { four: 4 }] },
         },
-        expected: `a=[1,2,3,[four=4]]`,
+        expected: 'a=[1,2,3,[four=4]]',
       },
     );
   });
 
   it('replaces invalid numbers with null', () => {
     assertStringify(
-      { input: NaN, expected: `null` },
-      { input: Infinity, expected: `null` },
-      { input: -Infinity, expected: `null` },
+      { input: NaN, expected: 'null' },
+      { input: Infinity, expected: 'null' },
+      { input: -Infinity, expected: 'null' },
     );
   });
 
@@ -193,7 +193,7 @@ array = [
     table[4938] = 4938;
     assertStringify({
       input: { table },
-      expected: `table=[0,1,2,3,4,5,6,7,10=10,11=11,12=12,4938=4938,bird=chirp,dog=woof,cat=meow]`,
+      expected: 'table=[0,1,2,3,4,5,6,7,10=10,11=11,12=12,4938=4938,bird=chirp,dog=woof,cat=meow]',
     });
     assertStringify({
       input: {
@@ -205,7 +205,7 @@ array = [
         numbers: 'yes',
         6: 'six',
       },
-      expected: `zero,one,two,three,four,6=six,numbers=yes`,
+      expected: 'zero,one,two,three,four,6=six,numbers=yes',
     });
   });
 
@@ -225,7 +225,7 @@ array = [
       {
         input: document,
         indent: false, // Ignored if not number or string,
-        expected: `hello world,goodbye world,array=[10,20,30],object=[a=10,b=20,c=30],nested=[[[[["hello there!!! i'm very indented :3"]]]]]`,
+        expected: 'hello world,goodbye world,array=[10,20,30],object=[a=10,b=20,c=30],nested=[[[[["hello there!!! i\'m very indented :3"]]]]]',
       },
       {
         input: document,

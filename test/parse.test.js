@@ -36,7 +36,7 @@ describe('stringify', () => {
         key: 'this is a quoted string', // Replaced!
         newlines: 'this is one line\nthis is another',
         quotes: 'this string has "quotation marks" in it!',
-        'multiline string': `this string has multiple lines!\nit also has "quotation marks" in it.\nit can include # any [ characters ].`,
+        'multiline string': 'this string has multiple lines!\nit also has "quotation marks" in it.\nit can include # any [ characters ].',
         table: {
           cat: 'meow',
           dog: 'woof',
@@ -333,12 +333,12 @@ literals = [
   });
 
   it('generates errors for invalid syntax', () => {
-    assert.throws(() => parse(`\\`), SyntaxError, 'CKT 1:1 unexpected character');
-    assert.throws(() => parse(`\\x`), SyntaxError, 'CKT 1:3 incomplete hex escape');
-    assert.throws(() => parse(`\\u`), SyntaxError, 'CKT 1:3 incomplete hex escape');
-    assert.throws(() => parse(`=`), SyntaxError, 'CKT 1:1 expected value');
-    assert.throws(() => parse(`[`), SyntaxError, 'CKT 1:2 expected value');
-    assert.throws(() => parse(`|\n=`), SyntaxError, 'CKT 4:2 unexpected =');
+    assert.throws(() => parse('\\'), SyntaxError, 'CKT 1:1 unexpected character');
+    assert.throws(() => parse('\\x'), SyntaxError, 'CKT 1:3 incomplete hex escape');
+    assert.throws(() => parse('\\u'), SyntaxError, 'CKT 1:3 incomplete hex escape');
+    assert.throws(() => parse('='), SyntaxError, 'CKT 1:1 expected value');
+    assert.throws(() => parse('['), SyntaxError, 'CKT 1:2 expected value');
+    assert.throws(() => parse('|\n='), SyntaxError, 'CKT 4:2 unexpected =');
   });
 
 });
