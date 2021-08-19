@@ -8,9 +8,12 @@
     "ckt",
     "json",
     "parse",
+    "parser",
     "decode",
+    "encode",
     "stringify",
-    "encode"
+    "config",
+    "environment"
   ],
   "type": "module",
   "module": "./lib/index.js",
