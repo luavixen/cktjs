@@ -9,7 +9,7 @@ const assertParse = (...cases) => {
   }
 };
 
-describe('stringify', () => {
+describe('parse', () => {
 
   it('returns an empty array for an empty document', () => {
     assertParse({ input: '', expected: [] });
@@ -33,7 +33,7 @@ describe('stringify', () => {
           2: { x: -10, y: 1 },
           3: { x:   0, y: 1 },
         },
-        key: 'this is a quoted string', // Replaced!
+        key: 'this is a quoted string', // Multiple values exist for key `key`, parse will you use the last one
         newlines: 'this is one line\nthis is another',
         quotes: 'this string has "quotation marks" in it!',
         'multiline string': 'this string has multiple lines!\nit also has "quotation marks" in it.\nit can include # any [ characters ].',
@@ -100,68 +100,70 @@ table = [
   it('passes the stress test', () => {
     assertParse({
       expected: {
-        '0': 'c',
-        '1': '123\n'
+        0: 'c',
+        1: '123\n'
           + '    4596    \n'
           + '789\n'
           + '||| | | ||| | <- this works ?? some how\n'
           + '\n\n'
           + ' <- literally all of the whitespace characters cktjs supports\n',
-        '2': ' these',
-        '3': ' are two different strings',
-        '4': ' as are',
-        '5': ' these',
-        '6': 'you can also nest tables!!',
-        '7': [[[['like this']]]],
-        '8': 'also!! a note on whitespace trimming',
-        '9': 'and finally!!! a cktjs-specific feature',
-        '10': 'literals that are also valid javascript literals get transformed as such',
+        2: ' these',
+        3: ' are two different strings',
+        4: ' as are',
+        5: ' these',
+        6: 'you can also nest tables!!',
+        7: [[[['like this']]]],
+        8: 'also!! a note on whitespace trimming',
+        9: 'and finally!!! a cktjs-specific feature',
+        10: 'literals that are also valid javascript literals get transformed as such',
         ten: 10,
         nine: 9,
         eight: '8',
-        "'seven'": "'7'",
+        '\'seven\'': '\'7\'',
         six: 6,
         five: 5,
         four: 4,
         'тнгее': 'тнгее',
         'two 🥺': ' 🥺 ',
-        "`!@$%^&*()-_+{}|':<>/? ONE": '\x00\n\r\t\x0B\f\b\x00\x1F3ÿሴ\n',
+        '`!@$%^&*()-_+{}|\':<>/? ONE': '\x00\n\r\t\x0B\f\b\x00\x1F3ÿሴ\n',
         table: {
-          '0': 'you can put array elements in here',
-          '1': 'like this',
-          '2': 'and this',
-          '3': 'or\tthis',
-          '4': 'maybe',
-          '5': 'this!',
-          '6': 'like normal!',
-          '7': 'you can also make elements by using the next index as the key',
-          '8': "even if it's a string",
-          '9': 'or an escaped number thing !!',
-          '11': false,
-          '12': true,
-          '13': 'null',
-          '14': "which shouldn't work!! but due to the way arrays work in javascript",
-          '15': 'it ends up making an array with holes',
-          '16': 'these expressions will all be true:',
-          '17': 'table[10] === undefined',
-          '18': 'table[11] === false',
-          '19': 'table[12] === true',
-          '20': 'table[13] === null',
-          '21': 'you can also really fuck shit up',
+          0: 'you can put array elements in here',
+          1: 'like this',
+          2: 'and this',
+          3: 'or\tthis',
+          4: 'maybe',
+          5: 'this!',
+          6: 'like normal!',
+          7: 'you can also make elements by using the next index as the key',
+          8: 'even if it\'s a string',
+          9: 'or an escaped number thing !!',
+          11: false,
+          12: true,
+          13: 'null',
+          14: 'which shouldn\'t work !!',
+          15: 'it ends up making holes',
+          16: 'these expressions will all be true:',
+          17: 'table[10] === undefined',
+          18: 'table[11] === false',
+          19: 'table[12] === true',
+          20: 'table[13] === null',
+          21: 'you can also really mess things up',
           'OR !! you can make keys': 'and values',
           '(like this one) will let': 'you do weird things like...',
           '281474976710656': 'this table will have 2^48 elements!! woah!!',
           '281474976710657': 'and this will be the (2^48)+1th :'
         },
         'fucked table': [ '1', '2', '3', '8', '4' ],
-        "there's also a fancy way to write a multiline string": 'like this!!\n' +
+        'there\'s also a fancy way to write a multiline string': 'like this!!\n' +
           'this text will be dumped verbatim\n' +
           'even escapes!! \\x32 and \\u0000 are treated literally, not unescaped \n' +
           '  note that cktjs does NOT add a trailing newline\n' +
           '  so this newline will be IGNORED ->',
         and: {
-          '0': 'you can nest them',
-          '1': { '0': ['to infinity'], 'keep em going': 'weeeee' },
+          0: 'you can nest them',
+          1: { 0: ['to infinity'], 'keep em going': 'weeeee' },
+          2: [],
+          3: [],
           'like this too': [
             'and just!! keep going',
             'to infinity',
@@ -177,10 +179,10 @@ table = [
           '+10',        '10e32',
           '10E31',      '3.4',
           '-3.443e+12', '-0090.090E-2',
-          "'null'",     'true',
+          '\'null\'',   'true',
           'fAlse',      '+-10',
           '10:3',       '1ee4',
-          '*3',         "'10'"
+          '*3',         '\'10\''
         ]
       },
       input: `
@@ -222,14 +224,14 @@ table = [
   12 = true
   11 = false
   null
-  which shouldn't work!! but due to the way arrays work in javascript,
-  it ends up making an array with holes,
+  which shouldn't work !!
+  it ends up making holes,
   these expressions will all be true:
   "table[10] === undefined"
   "table[11] === false"
   "table[12] === true"
   "table[13] === null"
-  you can also really fuck shit up
+  you can also really mess things up
   281474976710656 = this table will have 2^48 elements!! woah!!
   and this will be the (2^48)+1th :]c
 
@@ -280,8 +282,8 @@ and = [
   ];[
     keep em going = weeeee,[  to infinity    ]
   ]
-  #[][]
-  #^ invalid btw
+  [][]
+  #^ now valid!
 ]
 
 also!! a note on whitespace trimming
@@ -320,6 +322,41 @@ literals = [
     });
   });
 
+  it('parses tables and multilines next to eachother with EOF correctly', () => {
+    assertParse({
+      // Used to break because there was no \n to terminate the multiline
+      input: 'hello[value][][]|world[]',
+      expected: ['hello', ['value'], [], [], 'world[]'],
+    });
+  });
+
+  it('only considers integers without signs or leading zeros as indexes', () => {
+    assertParse({
+      expected: {
+        0: 'overwritten',
+        1: 'overwritten',
+        2: 'original',
+        3: 'original',
+        4: 'original',
+        '+2': 'overwritten',
+        '03': 'overwritten',
+        '4e1': 'overwritten'
+      },
+      input: `
+        original
+        0 = overwritten
+        original
+        1 = overwritten
+        original
+        +2 = overwritten
+        original
+        03 = overwritten
+        original
+        4e1 = overwritten
+      `,
+    });
+  });
+
   it('redefines properties that clash with Object.prototype', () => {
     const object = parse('hasOwnProperty=all of these,__defineGetter__=should get,propertyIsEnumerable=redefined');
     assert.strictEqual(object.hasOwnProperty, 'all of these');
@@ -338,7 +375,7 @@ literals = [
     assert.throws(() => parse('\\u'), SyntaxError, 'CKT 1:3 incomplete hex escape');
     assert.throws(() => parse('='), SyntaxError, 'CKT 1:1 expected value');
     assert.throws(() => parse('['), SyntaxError, 'CKT 1:2 expected value');
-    assert.throws(() => parse('|\n='), SyntaxError, 'CKT 4:2 unexpected =');
+    assert.throws(() => parse('|\n='), SyntaxError, 'CKT 2:1 unexpected =');
   });
 
 });

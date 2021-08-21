@@ -224,7 +224,7 @@ array = [
     assertStringify(
       {
         input: document,
-        indent: false, // Ignored if not number or string,
+        indent: false, // Ignored if not number or string
         expected: 'hello world,goodbye world,array=[10,20,30],object=[a=10,b=20,c=30],nested=[[[[["hello there!!! i\'m very indented :3"]]]]]',
       },
       {
