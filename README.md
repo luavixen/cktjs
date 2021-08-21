@@ -5,19 +5,19 @@
   <a href="https://www.npmjs.com/package/cktjs?activeTab=dependencies">
     <img src="https://badgen.net/bundlephobia/dependency-count/cktjs?style=flat-square">
   </a>
-  <a href="https://github.com/luavixen/cktjs/blob/master/lib/index.d.ts">
+  <a href="https://github.com/luavixen/cktjs/blob/main/lib/index.d.ts">
     <img src="https://badgen.net/npm/types/cktjs?style=flat-square">
   </a>
   <a href="https://bundlephobia.com/result?p=cktjs">
     <img src="https://badgen.net/bundlephobia/minzip/cktjs?style=flat-square">
   </a>
   <a href="https://github.com/luavixen/cktjs/actions">
-    <img src="https://badgen.net/github/status/luavixen/cktjs/master?label=build&style=flat-square">
+    <img src="https://badgen.net/github/status/luavixen/cktjs/main?label=build&style=flat-square">
   </a>
   <a href="https://coveralls.io/github/luavixen/cktjs">
     <img src="https://badgen.net/coveralls/c/github/luavixen/cktjs?style=flat-square">
   </a>
-  <a href="https://github.com/luavixen/cktjs/blob/master/LICENSE">
+  <a href="https://github.com/luavixen/cktjs/blob/main/LICENSE">
     <img src="https://badgen.net/github/license/luavixen/cktjs?style=flat-square">
   </a>
 </p>
