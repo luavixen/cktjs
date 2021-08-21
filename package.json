@@ -29,7 +29,8 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "test": "c8 --reporter lcov --reporter text-summary --reports-dir ./test/coverage mocha ./test/*.test.js"
+    "test": "c8 --reporter lcov --reporter text-summary --reports-dir ./test/coverage mocha ./test/*.test.js",
+    "prepublishOnly": "npm run build && npm run test"
   },
   "devDependencies": {
     "@types/chai": "^4.2.21",
