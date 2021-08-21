@@ -1,4 +1,6 @@
 .editorconfig
 .gitignore
+.npmignore
 rollup.config.js
+.github/
 test/
