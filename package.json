@@ -1,7 +1,7 @@
 {
   "name": "cktjs",
   "version": "1.0.0",
-  "description": "JSON-style CKT parsing/stringification.",
+  "description": "JSON-style CKT config language parsing/stringification.",
   "author": "Lua MacDougall <lua@foxgirl.dev> (https://foxgirl.dev/)",
   "license": "MIT",
   "keywords": [

@@ -33,7 +33,12 @@ It can be installed with:
 npm install cktjs
 ```
 
-Alternatively, you can use the browser IIFE build directly from a CDN.
+For [Deno](https://deno.land/) users, you can get the module from [deno.land/x/cktjs](https://deno.land/x/cktjs@1.0):
+```typescript
+import * as CKT from "https://deno.land/x/cktjs@1.0/cktjs.ts";
+```
+
+If you're working with a browser, you can use the IIFE build directly from a CDN.
 Currently, cktjs officially supports [unpkg](https://www.unpkg.com/) and [jsdelivr](https://www.jsdelivr.com/):
 ```html
 <!-- unpkg -->
@@ -121,7 +126,7 @@ popup = [
 ```
 
 ## Authors
-Made with ❤ by Lua MacDougall ([foxgirl.dev](https://foxgirl.dev/)).
+Made with ❤ by Lua MacDougall ([foxgirl.dev](https://foxgirl.dev/))
 
 ## License
 This project is licensed under the [MIT license](LICENSE).
