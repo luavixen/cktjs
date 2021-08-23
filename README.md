@@ -33,9 +33,9 @@ It can be installed with:
 npm install cktjs
 ```
 
-For [Deno](https://deno.land/) users, you can get the module from [deno.land/x/cktjs](https://deno.land/x/cktjs@1.0):
+For [Deno](https://deno.land/) users, you can get the module from [deno.land/x/cktjs](https://deno.land/x/cktjs):
 ```typescript
-import * as CKT from "https://deno.land/x/cktjs@1.0/cktjs.ts";
+import * as CKT from "https://deno.land/x/cktjs@v1.0/cktjs.ts";
 ```
 
 If you're working with a browser, you can use the IIFE build directly from a CDN.
