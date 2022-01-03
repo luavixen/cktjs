@@ -4,3 +4,5 @@
 rollup.config.js
 .github/
 test/
+cktjs.ts
+mod.ts
