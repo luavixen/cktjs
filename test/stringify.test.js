@@ -1,4 +1,4 @@
-import chai from "chai";
+import chai from 'chai';
 const { assert } = chai;
 
 import { stringify } from '../lib/stringify.js';
@@ -40,7 +40,7 @@ describe('stringify', () => {
       { input: '1000! Cool Strings', expected: '"1000! Cool Strings"' },
       { input: '\uD83E\uDD7A', expected: '"\\ud83e\\udd7a"' },
       { input: '\x00\x1F\x7F', expected: '"\\x00\\x1f\\u007f"' },
-      { input: '\x18weird\x1Aascii\x0C\x0Dcharacters\xFF\x1B', expected: '"\\x18weird\\x1aascii\\x0c\\rcharacters\\u00ff\\x1b"' },
+      { input: '\x18weird\x1Aascii\x0C\x0Dcharacters\xFF\x1B', expected: '"\\x18weird\\x1aascii\\x0c\\rcharacters\\u00ff\\x1b"' }
     );
   });
 
@@ -55,7 +55,7 @@ describe('stringify', () => {
       },
       array: [
         'first element', 'second element', 'third element',
-        { this: 'is the 4th element', name: { first: 'CKT', last: '???' } },
+        { this: 'is the 4th element', name: { first: 'CKT', last: '???' } }
       ],
     };
 
@@ -116,7 +116,7 @@ array = [
       { input: function () {}, expected: '' },
       { input: Symbol(), expected: '' },
       { input: undefined, expected: '' },
-      { input: 2048n, expected: '' },
+      { input: 2048n, expected: '' }
     );
   });
 
@@ -135,7 +135,7 @@ array = [
           c: new String('test string!!'),
         },
         expected: 'a=true,b=1024,c="test string!!"',
-      },
+      }
     );
   });
 
@@ -148,7 +148,7 @@ array = [
           a: { toJSON: () => [1, 2, 3, { four: 4 }] },
         },
         expected: 'a=[1,2,3,[four=4]]',
-      },
+      }
     );
   });
 
@@ -156,7 +156,7 @@ array = [
     assertStringify(
       { input: NaN, expected: 'null' },
       { input: Infinity, expected: 'null' },
-      { input: -Infinity, expected: 'null' },
+      { input: -Infinity, expected: 'null' }
     );
   });
 
@@ -214,12 +214,12 @@ array = [
       0: 'hello world',
       1: 'goodbye world',
       array: [
-        10, 20, 30,
+        10, 20, 30
       ],
       object: {
         a: 10, b: 20, c: 30,
       },
-      nested: [[[[['hello there!!! i\'m very indented :3']]]]],
+      nested: [[[[["hello there!!! i'm very indented :3"]]]]],
     };
     assertStringify(
       {
@@ -230,7 +230,8 @@ array = [
       {
         input: document,
         indent: 4, // 4 spaces
-        expected: `hello world
+        expected:
+`hello world
 goodbye world
 array = [
     10
@@ -257,7 +258,8 @@ nested = [
       {
         input: document,
         indent: '\t\t\t', // 3 tabs
-        expected: `hello world
+        expected:
+`hello world
 goodbye world
 array = [
 \t\t\t10

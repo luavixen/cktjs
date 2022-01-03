@@ -1,4 +1,4 @@
-import chai from "chai";
+import chai from 'chai';
 const { assert } = chai;
 
 import { parse } from '../lib/parse.js';
@@ -42,7 +42,8 @@ describe('parse', () => {
           dog: 'woof',
         },
       },
-      input: `
+      input:
+`
 # derived from the CKT v0.1.0 spec
 # https://git.sr.ht/~cricket/ckt/tree/f3d29afab63da85051f55643811a5d08bcf3bed4/item/SPEC
 
@@ -101,12 +102,14 @@ table = [
     assertParse({
       expected: {
         0: 'c',
-        1: '123\n'
+        1: (
+            '123\n'
           + '    4596    \n'
           + '789\n'
           + '||| | | ||| | <- this works ?? some how\n'
           + '\n\n'
-          + ' <- literally all of the whitespace characters cktjs supports\n',
+          + ' <- literally all of the whitespace characters cktjs supports\n'
+        ),
         2: ' these',
         3: ' are two different strings',
         4: ' as are',
@@ -154,11 +157,13 @@ table = [
           '281474976710657': 'and this will be the (2^48)+1th :'
         },
         'fucked table': [ '1', '2', '3', '8', '4' ],
-        'there\'s also a fancy way to write a multiline string': 'like this!!\n' +
-          'this text will be dumped verbatim\n' +
-          'even escapes!! \\x32 and \\u0000 are treated literally, not unescaped \n' +
-          '  note that cktjs does NOT add a trailing newline\n' +
-          '  so this newline will be IGNORED ->',
+        'there\'s also a fancy way to write a multiline string': (
+            'like this!!\n'
+          + 'this text will be dumped verbatim\n'
+          + 'even escapes!! \\x32 and \\u0000 are treated literally, not unescaped \n'
+          + '  note that cktjs does NOT add a trailing newline\n'
+          + '  so this newline will be IGNORED ->'
+        ),
         and: {
           0: 'you can nest them',
           1: { 0: ['to infinity'], 'keep em going': 'weeeee' },
@@ -185,7 +190,8 @@ table = [
           '*3',         '\'10\''
         ]
       },
-      input: `
+      input:
+`
 # comment
 # another comment
 
@@ -340,7 +346,7 @@ literals = [
         4: 'original',
         '+2': 'overwritten',
         '03': 'overwritten',
-        '4e1': 'overwritten'
+        '4e1': 'overwritten',
       },
       input: `
         original
