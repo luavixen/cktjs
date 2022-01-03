@@ -26,6 +26,8 @@
 cktjs is an implementation of a decoder and encoder for the [CKT config language](https://cricket.piapiac.org/software/ckt/).
 It aims to be a drop-in replacement for JavaScripts's built in [JSON library](https://tc39.es/ecma262/#sec-json-object) minus support for `reviver` and `replacer`.
 
+For syntax highlighting try the [cktvs extension](https://github.com/luavixen/cktvs) for Visual Studio Code.
+
 ## Installation
 The cktjs npm package provides the original ES module source plus CommonJS and browser IIFE builds.
 It can be installed with:
@@ -35,7 +37,7 @@ npm install cktjs
 
 For [Deno](https://deno.land/) users, you can get the module from [deno.land/x/cktjs](https://deno.land/x/cktjs):
 ```typescript
-import * as CKT from "https://deno.land/x/cktjs@v1.0/cktjs.ts";
+import * as CKT from "https://deno.land/x/cktjs@1.0/mod.ts";
 ```
 
 If you're working with a browser, you can use the IIFE build directly from a CDN.
@@ -52,9 +54,9 @@ Currently, cktjs officially supports [unpkg](https://www.unpkg.com/) and [jsdeli
 ### Import cktjs
 ```javascript
 // CommonJS
-const CKT = require('cktjs');
+const CKT = require("cktjs");
 // ESModules
-import * as CKT from 'cktjs';
+import * as CKT from "cktjs";
 ```
 
 ### Parse a CKT document
@@ -75,15 +77,15 @@ rate limits = [
 ```
 ```javascript
 {
-  'rate limits': {
-    '/*': {
-      'request limit': 100,
-      'window length': '2s'
+  "rate limits": {
+    "/*": {
+      "request limit": 100,
+      "window length": "2s"
     },
-    '/api/upload': {
-      'size limit': '100mb',
-      'request limit': 6,
-      'window length': '5s'
+    "/api/upload": {
+      "size limit": "100mb",
+      "request limit": 6,
+      "window length": "5s"
     }
   }
 }
